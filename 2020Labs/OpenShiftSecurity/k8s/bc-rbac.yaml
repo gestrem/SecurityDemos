@@ -1,0 +1,35 @@
+apiVersion: build.openshift.io/v1
+kind: BuildConfig
+metadata:
+  labels:
+    app: openshift-rbac
+    build: openshift-rbac
+  name: openshift-rbac
+spec:
+  failedBuildsHistoryLimit: 5
+  nodeSelector: null
+  output:
+    to:
+      kind: ImageStreamTag
+      name: openshift-rbac:latest
+  postCommit: {}
+  resources: {}
+  runPolicy: Serial
+  source:
+    configMaps:
+    - configMap:
+        name: openshift-rbac-source
+      destinationDir: /tmp/src
+    type: None
+  strategy:
+    sourceStrategy:
+      from:
+        kind: ImageStreamTag
+        name: golang:1.11.5
+        namespace: openshift
+    type: Source
+  successfulBuildsHistoryLimit: 5
+  triggers:
+  - type: ConfigChange
+status:
+  lastVersion: 1

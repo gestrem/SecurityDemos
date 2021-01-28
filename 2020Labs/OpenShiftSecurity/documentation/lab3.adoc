@@ -83,7 +83,7 @@ Prior to starting the lab, the following should be available to you:
 
 ==== Environment Walkthrough
 
-Login to OpenShift using the web console and from the _Administrator_ perspective, on the lefthand navigation pane, expand _Home_ and select *Projects*. If the _Developer_ perspective is shown, select the _Developer_ dropdown and select _Administrator_. Confirm that the *rbac-lab* project is displayed in the list of available projects.
+Login to OpenShift using the web console and from the _Administrator_ perspective, on the lefthand navigation pane, expand _Home_ and select *Projects*. If the _Developer_ perspective is shown, select the _Developer_ dropdown and select _Administrator_. Confirm that the *rbac-lab-userX* project is displayed in the list of available projects.
 
 image:images/lab3-1-projects.png[]
 
@@ -91,7 +91,7 @@ By expanding _Workloads_ on the lefthand side, select *Deployment Configs is pre
 
 image:images/lab3.2-deploymentconfigs.png[]
 
-NOTE: If `openshift-rbac` is not present, confirm you are in the `rbac-lab` project by selecting `rbac-lab` from the _Project_ dropdown at the top of the screen.
+NOTE: If `openshift-rbac` is not present, confirm you are in the `rbac-lab-userX` project by selecting `rbac-lab-userX` from the _Project_ dropdown at the top of the screen.
 
 Feel free to browse the around to view the _Pods_, _Secrets_, and _ConfigMaps_ that are part of the application.
 
@@ -109,11 +109,11 @@ The application is a simple golang based service that communicates with OpenShif
 
 Every pod that is deployed with OpenShift includes a set of tools that make it possible to communicate with the OpenShift API. These tools are found in the `/var/run/secrets/kubernetes.io/serviceaccount` directory.
 
-Using the OpenShift CLI, ensure that you are logged into the cluster and change into the `rbac-lab` namespace.
+Using the OpenShift CLI, ensure that you are logged into the cluster and change into the `rbac-lab-userX` namespace.
 
 [source]
 ----
-# oc project rbac-lab
+# oc project rbac-lab-userX
 ----
 
 Once in the project, list the running pods by typing *oc get pods*.
@@ -220,7 +220,7 @@ You can exit out of the running pod by typing `exit` and hit the _Return_ key.
 
 ==== Roles and RoleBindings
 
-With a basic understanding of how applications can query information from the OpenShift API, let's return our focus to the example application in the `rbac-lab` namespace. As you can see from the application viewed in the web browser, each of the requests against the API are returning a HTTP 403 error. This error indicates that authentication was successful, however, the user does not have the appropriate rights to access the requested service.
+With a basic understanding of how applications can query information from the OpenShift API, let's return our focus to the example application in the `rbac-lab-userX` namespace. As you can see from the application viewed in the web browser, each of the requests against the API are returning a HTTP 403 error. This error indicates that authentication was successful, however, the user does not have the appropriate rights to access the requested service.
 
 The first query attempts to list all _pods_ that are found in the current namespace. Recall that permission scope in OpenShift can either be at a namespace or cluster level. Since listing _pods_ in the current namespace is limited to only a single namespace, a `role` would be applicable for defining the policies that could be applied.
 
@@ -229,7 +229,7 @@ As covered in the overview section, any policy requires the following considerat
 * Resources that would be queried
 * Verbs associated to the request
 
-With those considerations in mind, a new role can be created for the application to allow the application to `list` all `pods` in the `rbac-lab` namespace.
+With those considerations in mind, a new role can be created for the application to allow the application to `list` all `pods` in the `rbac-lab-userX` namespace.
 
 Execute the following command to create a new `Role` called `pod-lister` that grants access to `list` all `pods`.
 
@@ -272,7 +272,7 @@ Execute the following command to create a new `RoleBinding` called `pod-listers`
 
 [source]
 ----
-# oc create rolebinding pod-listers --role=pod-lister --serviceaccount=rbac-lab:default
+# oc create rolebinding pod-listers --role=pod-lister --serviceaccount=rbac-lab-userX:default
 ----
 
 The `--serviceacount` flag takes the form `<namespace>:<serviceaccount>`
@@ -301,7 +301,7 @@ subjects:
   namespace: rbac-lab
 ----
 
-With the `Role` and `RoleBinding` now created in order for the _default_ Service Account to list pods in the `rbac-lab` namespace, return to the application in the web browser and refresh the page to confirm that a valid response is now being displayed for the first query.
+With the `Role` and `RoleBinding` now created in order for the _default_ Service Account to list pods in the `rbac-lab-userX` namespace, return to the application in the web browser and refresh the page to confirm that a valid response is now being displayed for the first query.
 
 image:images/lab3.2-pod-list-application.png[]
 
@@ -318,11 +318,11 @@ Execute the following command to create a new _ClusterRole_ called `namespace-li
 
 NOTE: If you receive an authorization error, be sure that you are logged into OpenShift using an account with elevated access.
 
-Now, create a `ClusterRoleBinding` to associate the `pod-lister` _ClusterRole_ to the `default` Service Account in the `rbac-lab` namespace:
+Now, create a `ClusterRoleBinding` to associate the `pod-lister` _ClusterRole_ to the `default` Service Account in the `rbac-lab-userX` namespace:
 
 [source]
 ----
-# oc create clusterrolebinding namespace-listers --clusterrole=namespace-lister --serviceaccount=rbac-lab:default
+# oc create clusterrolebinding namespace-listers-userX --clusterrole=namespace-lister-userX --serviceaccount=rbac-lab-userX:default
 ----
 
 With the _ClusterRole_ and _ClusterRoleBinding_ created, return once again to the application in the web browser and refresh the page. The second query should now display a valid response.
@@ -390,11 +390,11 @@ yes
 
 As indicated, since you are logged in with a user with elevated access to OpenShift, you can successfully list all users.
 
-Now, use the User Impersonation capabilities to determine if the _default_ Service Account in the `rbac-lab` namespace can list users.
+Now, use the User Impersonation capabilities to determine if the _default_ Service Account in the `rbac-lab-userX` namespace can list users.
 
 [source]
 ----
-# oc auth can-i list users --as=system:serviceaccount:rbac-lab:default
+# oc auth can-i list users --as=system:serviceaccount:rbac-lab-userX:default
 
 Warning: resource 'users' is not namespace scoped in group 'user.openshift.io'
 no
@@ -432,7 +432,7 @@ Finally, create a `ClusterRoleBinding` to grant access to the default Service Ac
 
 [source]
 ----
-# oc create clusterrolebinding user-listers --clusterrole=user-lister --serviceaccount=rbac-lab:default
+# oc create clusterrolebinding user-listers-userX --clusterrole=user-lister-userX --serviceaccount=rbac-lab-userX:default
 ----
 
 While we could confirm that the application can now query for users, let's use User Impersonation to determine ahead of time whether the default Service Account has the appropriate rights.
@@ -441,7 +441,7 @@ Execute the following command to impersonate the default Service Account:
 
 [source]
 ----
-# oc auth can-i list users --as=system:serviceaccount:rbac-lab:default
+# oc auth can-i list users --as=system:serviceaccount:rbac-lab-userX:default
 
 Warning: resource 'users' is not namespace scoped in group 'user.openshift.io'
 yes

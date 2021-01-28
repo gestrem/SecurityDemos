@@ -1,0 +1,684 @@
+apiVersion: v1
+items:
+  
+  kind: ReplicationController
+  metadata:
+    annotations:
+      openshift.io/deployer-pod.completed-at: 2021-01-25 16:33:28 +0000 UTC
+      openshift.io/deployer-pod.created-at: 2021-01-25 16:32:41 +0000 UTC
+      openshift.io/deployer-pod.name: openshift-rbac-1-deploy
+      openshift.io/deployment-config.latest-version: "1"
+      openshift.io/deployment-config.name: openshift-rbac
+      openshift.io/deployment.phase: Complete
+      openshift.io/deployment.replicas: "1"
+      openshift.io/deployment.status-reason: config change
+      openshift.io/encoded-deployment-config: |
+        {"kind":"DeploymentConfig","apiVersion":"apps.openshift.io/v1","metadata":{"name":"openshift-rbac","namespace":"rbac-lab","selfLink":"/apis/apps.openshift.io/v1/namespaces/rbac-lab/deploymentconfigs/openshift-rbac","uid":"1cb612db-cbca-4071-bace-61287b29f25a","resourceVersion":"43500","generation":2,"creationTimestamp":"2021-01-25T16:31:06Z","labels":{"app":"openshift-rbac"},"managedFields":[{"manager":"oc","operation":"Update","apiVersion":"apps.openshift.io/v1","time":"2021-01-25T16:31:06Z","fieldsType":"FieldsV1","fieldsV1":{"f:metadata":{"f:labels":{".":{},"f:app":{}}},"f:spec":{"f:replicas":{},"f:revisionHistoryLimit":{},"f:selector":{".":{},"f:deploymentconfig":{}},"f:strategy":{"f:activeDeadlineSeconds":{},"f:resources":{"f:limits":{".":{},"f:cpu":{},"f:memory":{}},"f:requests":{".":{},"f:cpu":{},"f:memory":{}}},"f:rollingParams":{".":{},"f:intervalSeconds":{},"f:maxSurge":{},"f:maxUnavailable":{},"f:timeoutSeconds":{},"f:updatePeriodSeconds":{}},"f:type":{}},"f:template":{".":{},"f:metadata":{".":{},"f:creationTimestamp":{},"f:labels":{".":{},"f:app":{},"f:deploymentconfig":{}}},"f:spec":{".":{},"f:containers":{".":{},"k:{\"name\":\"openshift-rbac\"}":{".":{},"f:imagePullPolicy":{},"f:name":{},"f:resources":{},"f:terminationMessagePath":{},"f:terminationMessagePolicy":{}}},"f:dnsPolicy":{},"f:restartPolicy":{},"f:schedulerName":{},"f:securityContext":{},"f:terminationGracePeriodSeconds":{}}}}}},{"manager":"openshift-controller-manager","operation":"Update","apiVersion":"apps.openshift.io/v1","time":"2021-01-25T16:32:41Z","fieldsType":"FieldsV1","fieldsV1":{"f:spec":{"f:template":{"f:spec":{"f:containers":{"k:{\"name\":\"openshift-rbac\"}":{"f:image":{}}}}},"f:triggers":{}},"f:status":{"f:conditions":{".":{},"k:{\"type\":\"Available\"}":{".":{},"f:lastTransitionTime":{},"f:lastUpdateTime":{},"f:message":{},"f:status":{},"f:type":{}}},"f:details":{".":{},"f:causes":{},"f:message":{}},"f:latestVersion":{},"f:observedGeneration":{}}}}]},"spec":{"strategy":{"type":"Rolling","rollingParams":{"updatePeriodSeconds":1,"intervalSeconds":1,"timeoutSeconds":600,"maxUnavailable":"25%","maxSurge":"25%"},"resources":{"limits":{"cpu":"200m","memory":"128Mi"},"requests":{"cpu":"200m","memory":"128Mi"}},"activeDeadlineSeconds":21600},"triggers":[{"type":"ConfigChange"},{"type":"ImageChange","imageChangeParams":{"automatic":true,"containerNames":["openshift-rbac"],"from":{"kind":"ImageStreamTag","namespace":"rbac-lab","name":"openshift-rbac:latest"},"lastTriggeredImage":"image-registry.openshift-image-registry.svc:5000/rbac-lab/openshift-rbac@sha256:6b60dc1174918d90b4d727720dac79469d3072e56b28796e6aed361221f28e0e"}}],"replicas":1,"revisionHistoryLimit":10,"test":false,"selector":{"deploymentconfig":"openshift-rbac"},"template":{"metadata":{"creationTimestamp":null,"labels":{"app":"openshift-rbac","deploymentconfig":"openshift-rbac"}},"spec":{"containers":[{"name":"openshift-rbac","image":"image-registry.openshift-image-registry.svc:5000/rbac-lab/openshift-rbac@sha256:6b60dc1174918d90b4d727720dac79469d3072e56b28796e6aed361221f28e0e","resources":{},"terminationMessagePath":"/dev/termination-log","terminationMessagePolicy":"File","imagePullPolicy":"Always"}],"restartPolicy":"Always","terminationGracePeriodSeconds":30,"dnsPolicy":"ClusterFirst","securityContext":{},"schedulerName":"default-scheduler"}}},"status":{"latestVersion":1,"observedGeneration":1,"replicas":0,"updatedReplicas":0,"availableReplicas":0,"unavailableReplicas":0,"details":{"message":"config change","causes":[{"type":"ConfigChange"}]},"conditions":[{"type":"Available","status":"False","lastUpdateTime":"2021-01-25T16:31:06Z","lastTransitionTime":"2021-01-25T16:31:06Z","message":"Deployment config does not have minimum availability."}]}}
+    creationTimestamp: "2021-01-25T16:32:41Z"
+    generation: 2
+    labels:
+      app: openshift-rbac
+      openshift.io/deployment-config.name: openshift-rbac
+    managedFields:
+    - apiVersion: v1
+      fieldsType: FieldsV1
+      fieldsV1:
+        f:metadata:
+          f:annotations:
+            .: {}
+            f:openshift.io/deployer-pod.completed-at: {}
+            f:openshift.io/deployer-pod.created-at: {}
+            f:openshift.io/deployer-pod.name: {}
+            f:openshift.io/deployment-config.latest-version: {}
+            f:openshift.io/deployment-config.name: {}
+            f:openshift.io/deployment.phase: {}
+            f:openshift.io/deployment.replicas: {}
+            f:openshift.io/deployment.status-reason: {}
+            f:openshift.io/encoded-deployment-config: {}
+          f:labels:
+            .: {}
+            f:app: {}
+            f:openshift.io/deployment-config.name: {}
+          f:ownerReferences:
+            .: {}
+            k:{"uid":"1cb612db-cbca-4071-bace-61287b29f25a"}:
+              .: {}
+              f:apiVersion: {}
+              f:blockOwnerDeletion: {}
+              f:controller: {}
+              f:kind: {}
+              f:name: {}
+              f:uid: {}
+        f:spec:
+          f:replicas: {}
+          f:selector:
+            .: {}
+            f:deployment: {}
+            f:deploymentconfig: {}
+          f:template:
+            .: {}
+            f:metadata:
+              .: {}
+              f:annotations:
+                .: {}
+                f:openshift.io/deployment-config.latest-version: {}
+                f:openshift.io/deployment-config.name: {}
+                f:openshift.io/deployment.name: {}
+              f:creationTimestamp: {}
+              f:labels:
+                .: {}
+                f:app: {}
+                f:deployment: {}
+                f:deploymentconfig: {}
+            f:spec:
+              .: {}
+              f:containers:
+                .: {}
+                k:{"name":"openshift-rbac"}:
+                  .: {}
+                  f:image: {}
+                  f:imagePullPolicy: {}
+                  f:name: {}
+                  f:resources: {}
+                  f:terminationMessagePath: {}
+                  f:terminationMessagePolicy: {}
+              f:dnsPolicy: {}
+              f:restartPolicy: {}
+              f:schedulerName: {}
+              f:securityContext: {}
+              f:terminationGracePeriodSeconds: {}
+      manager: openshift-controller-manager
+      operation: Update
+      time: "2021-01-25T16:33:28Z"
+    - apiVersion: v1
+      fieldsType: FieldsV1
+      fieldsV1:
+        f:status:
+          f:availableReplicas: {}
+          f:fullyLabeledReplicas: {}
+          f:observedGeneration: {}
+          f:readyReplicas: {}
+          f:replicas: {}
+      manager: kube-controller-manager
+      operation: Update
+      time: "2021-01-27T08:47:16Z"
+    name: openshift-rbac-1
+    namespace: rbac-lab
+    ownerReferences:
+    - apiVersion: apps.openshift.io/v1
+      blockOwnerDeletion: true
+      controller: true
+      kind: DeploymentConfig
+      name: openshift-rbac
+      uid: 1cb612db-cbca-4071-bace-61287b29f25a
+    resourceVersion: "340636"
+    selfLink: /api/v1/namespaces/rbac-lab/replicationcontrollers/openshift-rbac-1
+    uid: b7a5a5dc-133a-4932-9d41-136ee2ee4012
+  spec:
+    replicas: 1
+    selector:
+      deployment: openshift-rbac-1
+      deploymentconfig: openshift-rbac
+    template:
+      metadata:
+        annotations:
+          openshift.io/deployment-config.latest-version: "1"
+          openshift.io/deployment-config.name: openshift-rbac
+          openshift.io/deployment.name: openshift-rbac-1
+        creationTimestamp: null
+        labels:
+          app: openshift-rbac
+          deployment: openshift-rbac-1
+          deploymentconfig: openshift-rbac
+      spec:
+        containers:
+        - image: image-registry.openshift-image-registry.svc:5000/rbac-lab/openshift-rbac@sha256:6b60dc1174918d90b4d727720dac79469d3072e56b28796e6aed361221f28e0e
+          imagePullPolicy: Always
+          name: openshift-rbac
+          resources: {}
+          terminationMessagePath: /dev/termination-log
+          terminationMessagePolicy: File
+        dnsPolicy: ClusterFirst
+        restartPolicy: Always
+        schedulerName: default-scheduler
+        securityContext: {}
+        terminationGracePeriodSeconds: 30
+  status:
+    availableReplicas: 1
+    fullyLabeledReplicas: 1
+    observedGeneration: 2
+    readyReplicas: 1
+    replicas: 1
+- apiVersion: v1
+  kind: Service
+  metadata:
+    creationTimestamp: "2021-01-25T16:31:06Z"
+    labels:
+      app: openshift-rbacs
+    managedFields:
+    - apiVersion: v1
+      fieldsType: FieldsV1
+      fieldsV1:
+        f:metadata:
+          f:labels:
+            .: {}
+            f:app: {}
+        f:spec:
+          f:ports:
+            .: {}
+            k:{"port":8080,"protocol":"TCP"}:
+              .: {}
+              f:port: {}
+              f:protocol: {}
+              f:targetPort: {}
+          f:selector:
+            .: {}
+            f:deploymentconfig: {}
+          f:sessionAffinity: {}
+          f:type: {}
+      manager: oc
+      operation: Update
+      time: "2021-01-25T16:31:06Z"
+    name: openshift-rbac
+    namespace: rbac-lab
+    resourceVersion: "42979"
+    selfLink: /api/v1/namespaces/rbac-lab/services/openshift-rbac
+    uid: 19bfd642-9225-4afc-bd83-066e60d5c698
+  spec:
+    clusterIP: 172.30.135.85
+    ports:
+    - port: 8080
+      protocol: TCP
+      targetPort: 8080
+    selector:
+      deploymentconfig: openshift-rbac
+    sessionAffinity: None
+    type: ClusterIP
+  status:
+    loadBalancer: {}
+- apiVersion: apps.openshift.io/v1
+  kind: DeploymentConfig
+  metadata:
+    creationTimestamp: "2021-01-25T16:31:06Z"
+    generation: 2
+    labels:
+      app: openshift-rbac
+    managedFields:
+    - apiVersion: apps.openshift.io/v1
+      fieldsType: FieldsV1
+      fieldsV1:
+        f:metadata:
+          f:labels:
+            .: {}
+            f:app: {}
+        f:spec:
+          f:replicas: {}
+          f:revisionHistoryLimit: {}
+          f:selector:
+            .: {}
+            f:deploymentconfig: {}
+          f:strategy:
+            f:activeDeadlineSeconds: {}
+            f:resources:
+              f:limits:
+                .: {}
+                f:cpu: {}
+                f:memory: {}
+              f:requests:
+                .: {}
+                f:cpu: {}
+                f:memory: {}
+            f:rollingParams:
+              .: {}
+              f:intervalSeconds: {}
+              f:maxSurge: {}
+              f:maxUnavailable: {}
+              f:timeoutSeconds: {}
+              f:updatePeriodSeconds: {}
+            f:type: {}
+          f:template:
+            .: {}
+            f:metadata:
+              .: {}
+              f:creationTimestamp: {}
+              f:labels:
+                .: {}
+                f:app: {}
+                f:deploymentconfig: {}
+            f:spec:
+              .: {}
+              f:containers:
+                .: {}
+                k:{"name":"openshift-rbac"}:
+                  .: {}
+                  f:imagePullPolicy: {}
+                  f:name: {}
+                  f:resources: {}
+                  f:terminationMessagePath: {}
+                  f:terminationMessagePolicy: {}
+              f:dnsPolicy: {}
+              f:restartPolicy: {}
+              f:schedulerName: {}
+              f:securityContext: {}
+              f:terminationGracePeriodSeconds: {}
+      manager: oc
+      operation: Update
+      time: "2021-01-25T16:31:06Z"
+    - apiVersion: apps.openshift.io/v1
+      fieldsType: FieldsV1
+      fieldsV1:
+        f:spec:
+          f:template:
+            f:spec:
+              f:containers:
+                k:{"name":"openshift-rbac"}:
+                  f:image: {}
+          f:triggers: {}
+        f:status:
+          f:availableReplicas: {}
+          f:conditions:
+            .: {}
+            k:{"type":"Available"}:
+              .: {}
+              f:lastTransitionTime: {}
+              f:lastUpdateTime: {}
+              f:message: {}
+              f:status: {}
+              f:type: {}
+            k:{"type":"Progressing"}:
+              .: {}
+              f:lastTransitionTime: {}
+              f:lastUpdateTime: {}
+              f:message: {}
+              f:reason: {}
+              f:status: {}
+              f:type: {}
+          f:details:
+            .: {}
+            f:causes: {}
+            f:message: {}
+          f:latestVersion: {}
+          f:observedGeneration: {}
+          f:readyReplicas: {}
+          f:replicas: {}
+          f:unavailableReplicas: {}
+          f:updatedReplicas: {}
+      manager: openshift-controller-manager
+      operation: Update
+      time: "2021-01-26T10:01:34Z"
+    name: openshift-rbac
+    namespace: rbac-lab
+    resourceVersion: "195093"
+    selfLink: /apis/apps.openshift.io/v1/namespaces/rbac-lab/deploymentconfigs/openshift-rbac
+    uid: 1cb612db-cbca-4071-bace-61287b29f25a
+  spec:
+    replicas: 1
+    revisionHistoryLimit: 10
+    selector:
+      deploymentconfig: openshift-rbac
+    strategy:
+      activeDeadlineSeconds: 21600
+      resources:
+        limits:
+          cpu: 200m
+          memory: 128Mi
+        requests:
+          cpu: 200m
+          memory: 128Mi
+      rollingParams:
+        intervalSeconds: 1
+        maxSurge: 25%
+        maxUnavailable: 25%
+        timeoutSeconds: 600
+        updatePeriodSeconds: 1
+      type: Rolling
+    template:
+      metadata:
+        creationTimestamp: null
+        labels:
+          app: openshift-rbac
+          deploymentconfig: openshift-rbac
+      spec:
+        containers:
+        - image: image-registry.openshift-image-registry.svc:5000/rbac-lab/openshift-rbac@sha256:6b60dc1174918d90b4d727720dac79469d3072e56b28796e6aed361221f28e0e
+          imagePullPolicy: Always
+          name: openshift-rbac
+          resources: {}
+          terminationMessagePath: /dev/termination-log
+          terminationMessagePolicy: File
+        dnsPolicy: ClusterFirst
+        restartPolicy: Always
+        schedulerName: default-scheduler
+        securityContext: {}
+        terminationGracePeriodSeconds: 30
+    test: false
+    triggers:
+    - type: ConfigChange
+    - imageChangeParams:
+        automatic: true
+        containerNames:
+        - openshift-rbac
+        from:
+          kind: ImageStreamTag
+          name: openshift-rbac:latest
+          namespace: rbac-lab
+        lastTriggeredImage: image-registry.openshift-image-registry.svc:5000/rbac-lab/openshift-rbac@sha256:6b60dc1174918d90b4d727720dac79469d3072e56b28796e6aed361221f28e0e
+      type: ImageChange
+  status:
+    availableReplicas: 1
+    conditions:
+    - lastTransitionTime: "2021-01-25T16:32:45Z"
+      lastUpdateTime: "2021-01-25T16:33:28Z"
+      message: replication controller "openshift-rbac-1" successfully rolled out
+      reason: NewReplicationControllerAvailable
+      status: "True"
+      type: Progressing
+    - lastTransitionTime: "2021-01-26T10:01:34Z"
+      lastUpdateTime: "2021-01-26T10:01:34Z"
+      message: Deployment config has minimum availability.
+      status: "True"
+      type: Available
+    details:
+      causes:
+      - type: ConfigChange
+      message: config change
+    latestVersion: 1
+    observedGeneration: 2
+    readyReplicas: 1
+    replicas: 1
+    unavailableReplicas: 0
+    updatedReplicas: 1
+- apiVersion: build.openshift.io/v1
+  kind: BuildConfig
+  metadata:
+    creationTimestamp: "2021-01-25T16:31:06Z"
+    labels:
+      app: openshift-rbac
+      build: openshift-rbac
+    managedFields:
+    - apiVersion: build.openshift.io/v1
+      fieldsType: FieldsV1
+      fieldsV1:
+        f:metadata:
+          f:labels:
+            .: {}
+            f:app: {}
+            f:build: {}
+        f:spec:
+          f:failedBuildsHistoryLimit: {}
+          f:output:
+            f:to:
+              .: {}
+              f:kind: {}
+              f:name: {}
+          f:runPolicy: {}
+          f:source:
+            f:configMaps: {}
+            f:type: {}
+          f:strategy:
+            f:sourceStrategy:
+              .: {}
+              f:from:
+                .: {}
+                f:kind: {}
+                f:name: {}
+                f:namespace: {}
+            f:type: {}
+          f:triggers: {}
+      manager: oc
+      operation: Update
+      time: "2021-01-25T16:31:06Z"
+    - apiVersion: build.openshift.io/v1
+      fieldsType: FieldsV1
+      fieldsV1:
+        f:status:
+          f:lastVersion: {}
+      manager: openshift-apiserver
+      operation: Update
+      time: "2021-01-25T16:31:06Z"
+    name: openshift-rbac
+    namespace: rbac-lab
+    resourceVersion: "42994"
+    selfLink: /apis/build.openshift.io/v1/namespaces/rbac-lab/buildconfigs/openshift-rbac
+    uid: 474ba5c7-b20d-43b3-b508-d5164b22b785
+  spec:
+    failedBuildsHistoryLimit: 5
+    nodeSelector: null
+    output:
+      to:
+        kind: ImageStreamTag
+        name: openshift-rbac:latest
+    postCommit: {}
+    resources: {}
+    runPolicy: Serial
+    source:
+      configMaps:
+      - configMap:
+          name: openshift-rbac-source
+        destinationDir: /tmp/src
+      type: None
+    strategy:
+      sourceStrategy:
+        from:
+          kind: ImageStreamTag
+          name: golang:1.11.5
+          namespace: openshift
+      type: Source
+    successfulBuildsHistoryLimit: 5
+    triggers:
+    - type: ConfigChange
+  status:
+    lastVersion: 1
+- apiVersion: build.openshift.io/v1
+  kind: Build
+  metadata:
+    annotations:
+      openshift.io/build-config.name: openshift-rbac
+      openshift.io/build.number: "1"
+      openshift.io/build.pod-name: openshift-rbac-1-build
+    creationTimestamp: "2021-01-25T16:31:06Z"
+    labels:
+      app: openshift-rbac
+      build: openshift-rbac
+      buildconfig: openshift-rbac
+      openshift.io/build-config.name: openshift-rbac
+      openshift.io/build.start-policy: Serial
+    name: openshift-rbac-1
+    namespace: rbac-lab
+    ownerReferences:
+    - apiVersion: build.openshift.io/v1
+      controller: true
+      kind: BuildConfig
+      name: openshift-rbac
+      uid: 474ba5c7-b20d-43b3-b508-d5164b22b785
+    resourceVersion: "43502"
+    selfLink: /apis/build.openshift.io/v1/namespaces/rbac-lab/builds/openshift-rbac-1
+    uid: 6d211fcf-0280-41f3-95a6-904b6fb34fdf
+  spec:
+    nodeSelector: null
+    output:
+      pushSecret:
+        name: builder-dockercfg-xvkg6
+      to:
+        kind: ImageStreamTag
+        name: openshift-rbac:latest
+    postCommit: {}
+    resources: {}
+    serviceAccount: builder
+    source:
+      configMaps:
+      - configMap:
+          name: openshift-rbac-source
+        destinationDir: /tmp/src
+      type: None
+    strategy:
+      sourceStrategy:
+        from:
+          kind: DockerImage
+          name: image-registry.openshift-image-registry.svc:5000/openshift/golang@sha256:ebfed97ee40d3e38794a12c10587082173e90546d2cb97514d7e42457ec156b7
+        pullSecret:
+          name: builder-dockercfg-xvkg6
+      type: Source
+    triggeredBy:
+    - message: Build configuration change
+  status:
+    completionTimestamp: "2021-01-25T16:32:41Z"
+    conditions:
+    - lastTransitionTime: "2021-01-25T16:31:06Z"
+      lastUpdateTime: "2021-01-25T16:31:06Z"
+      status: "False"
+      type: New
+    - lastTransitionTime: "2021-01-25T16:31:10Z"
+      lastUpdateTime: "2021-01-25T16:31:10Z"
+      status: "False"
+      type: Pending
+    - lastTransitionTime: "2021-01-25T16:32:41Z"
+      lastUpdateTime: "2021-01-25T16:32:41Z"
+      status: "False"
+      type: Running
+    - lastTransitionTime: "2021-01-25T16:32:41Z"
+      lastUpdateTime: "2021-01-25T16:32:41Z"
+      status: "True"
+      type: Complete
+    config:
+      kind: BuildConfig
+      name: openshift-rbac
+      namespace: rbac-lab
+    duration: 95000000000
+    output:
+      to:
+        imageDigest: sha256:6b60dc1174918d90b4d727720dac79469d3072e56b28796e6aed361221f28e0e
+    outputDockerImageReference: image-registry.openshift-image-registry.svc:5000/rbac-lab/openshift-rbac:latest
+    phase: Complete
+    stages:
+    - durationMilliseconds: 48409
+      name: PullImages
+      startTime: "2021-01-25T16:31:10Z"
+      steps:
+      - durationMilliseconds: 48409
+        name: PullBaseImage
+        startTime: "2021-01-25T16:31:10Z"
+    - durationMilliseconds: 38921
+      name: Build
+      startTime: "2021-01-25T16:31:58Z"
+      steps:
+      - durationMilliseconds: 38921
+        name: DockerBuild
+        startTime: "2021-01-25T16:31:58Z"
+    - durationMilliseconds: 2860
+      name: PushImage
+      startTime: "2021-01-25T16:32:37Z"
+      steps:
+      - durationMilliseconds: 2860
+        name: PushImage
+        startTime: "2021-01-25T16:32:37Z"
+    startTimestamp: "2021-01-25T16:31:06Z"
+- apiVersion: image.openshift.io/v1
+  kind: ImageStream
+  metadata:
+    creationTimestamp: "2021-01-25T16:31:06Z"
+    generation: 1
+    labels:
+      app: openshift-rbac
+      build: openshift-rbac
+    managedFields:
+    - apiVersion: image.openshift.io/v1
+      fieldsType: FieldsV1
+      fieldsV1:
+        f:metadata:
+          f:labels:
+            .: {}
+            f:app: {}
+            f:build: {}
+      manager: oc
+      operation: Update
+      time: "2021-01-25T16:31:06Z"
+    name: openshift-rbac
+    namespace: rbac-lab
+    resourceVersion: "43495"
+    selfLink: /apis/image.openshift.io/v1/namespaces/rbac-lab/imagestreams/openshift-rbac
+    uid: 01fccea6-d483-4993-89cd-8e0f39b8896b
+  spec:
+    lookupPolicy:
+      local: false
+  status:
+    dockerImageRepository: image-registry.openshift-image-registry.svc:5000/rbac-lab/openshift-rbac
+    publicDockerImageRepository: default-route-openshift-image-registry.apps.cluster-fbc8.fbc8.example.opentlc.com/rbac-lab/openshift-rbac
+    tags:
+    - items:
+      - created: "2021-01-25T16:32:40Z"
+        dockerImageReference: image-registry.openshift-image-registry.svc:5000/rbac-lab/openshift-rbac@sha256:6b60dc1174918d90b4d727720dac79469d3072e56b28796e6aed361221f28e0e
+        generation: 1
+        image: sha256:6b60dc1174918d90b4d727720dac79469d3072e56b28796e6aed361221f28e0e
+      tag: latest
+- apiVersion: route.openshift.io/v1
+  kind: Route
+  metadata:
+    annotations:
+      openshift.io/host.generated: "true"
+    creationTimestamp: "2021-01-25T16:31:06Z"
+    labels:
+      app: openshift-rbac
+    managedFields:
+    - apiVersion: route.openshift.io/v1
+      fieldsType: FieldsV1
+      fieldsV1:
+        f:metadata:
+          f:labels:
+            .: {}
+            f:app: {}
+        f:spec:
+          f:port:
+            .: {}
+            f:targetPort: {}
+          f:tls:
+            .: {}
+            f:insecureEdgeTerminationPolicy: {}
+            f:termination: {}
+          f:to:
+            f:kind: {}
+            f:name: {}
+            f:weight: {}
+          f:wildcardPolicy: {}
+      manager: oc
+      operation: Update
+      time: "2021-01-25T16:31:06Z"
+    - apiVersion: route.openshift.io/v1
+      fieldsType: FieldsV1
+      fieldsV1:
+        f:status:
+          f:ingress: {}
+      manager: openshift-router
+      operation: Update
+      time: "2021-01-25T16:31:06Z"
+    name: openshift-rbac
+    namespace: rbac-lab
+    resourceVersion: "42991"
+    selfLink: /apis/route.openshift.io/v1/namespaces/rbac-lab/routes/openshift-rbac
+    uid: 601467a6-930b-4222-9208-c151f7015975
+  spec:
+    host: openshift-rbac-rbac-lab.apps.cluster-fbc8.fbc8.example.opentlc.com
+    port:
+      targetPort: 8080
+    tls:
+      insecureEdgeTerminationPolicy: Redirect
+      termination: edge
+    to:
+      kind: Service
+      name: openshift-rbac
+      weight: 100
+    wildcardPolicy: None
+  status:
+    ingress:
+    - conditions:
+      - lastTransitionTime: "2021-01-25T16:31:06Z"
+        status: "True"
+        type: Admitted
+      host: openshift-rbac-rbac-lab.apps.cluster-fbc8.fbc8.example.opentlc.com
+      routerCanonicalHostname: apps.cluster-fbc8.fbc8.example.opentlc.com
+      routerName: default
+      wildcardPolicy: None
+kind: List
+metadata:
+  resourceVersion: ""
+  selfLink: ""
