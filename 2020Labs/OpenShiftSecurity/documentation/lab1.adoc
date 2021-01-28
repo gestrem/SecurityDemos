@@ -18,7 +18,7 @@ Almost all software you are running in your containers does not require root. Yo
 
 . In the OpenShift console, navigate to *Home->Projects*, search for *myproject-userX* and click on it.
 +
-image:images/lab1.1-myproject-userX.png[]
+image:images/lab1.1-myproject.png[]
 
 . Then, go to the Workload tab and click on *add other content*.
 +
